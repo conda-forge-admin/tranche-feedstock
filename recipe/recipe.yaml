@@ -30,6 +30,9 @@ tests:
       imports:
         - tranche
       pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - files:
       source:
         - tests/**

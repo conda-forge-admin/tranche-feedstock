@@ -20,9 +20,10 @@ requirements:
     - python ${{ python_min }}.*
     - pip
     - setuptools >=64
+    - wheel
   run:
     - python >=${{ python_min }}
-    # numpy extra
+    # from the numpy extra
     - numpy >=1.22
 tests:
   - python:

@@ -1,6 +1,6 @@
 context:
   name: tranche
-  version: "0.5.0"
+  version: "0.6.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 6dc78ced6d5710b3c057bb08be521a818a002c80f1a212ee801588cd14fd756b
+  sha256: c7a32bbe48bf689f601933c607ea054cc119f90e5c16ee63d31d80f53765ddf4
 
 build:
   script: python -m pip install . -vv --no-deps --no-build-isolation
@@ -20,15 +20,19 @@ requirements:
     - python ${{ python_min }}.*
     - pip
     - setuptools >=64
+    - wheel
   run:
     - python >=${{ python_min }}
-    # numpy extra
+    # from the numpy extra
     - numpy >=1.22
 tests:
   - python:
       imports:
         - tranche
       pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - files:
       source:
         - tests/**
